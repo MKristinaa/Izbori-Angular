@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div id="first_div_register" class="col-12 col-md-5">
+      <a class="navbar-brand" routerLink=""><img src="../../assets/Images/slika3.png" width="100px" alt="Logo"></a>
+      <div class="position-relative" style="padding-top: 5%;">
+        <b>SVE <br> INFORMACIJE <br> NA JEDNOM<br>MESTU</b>
+      </div>
+      <button id="white_button" class="btn btn-primary mt-3" routerLink="/login">Uloguj se</button>
+    </div>
+
+    <div class="col-12 col-md-7 d-flex align-items-center justify-content-center">
+      <div class="col-10 col-md-7 col-lg-5">
+        <div id="text" class="d-flex align-items-center justify-content-center mb-4 mt-4">
+          <b class="text-md-center">REGISTRACIJA KORISNIKA</b>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group mb-1">
+            <input class="form-control w-100 custom-input mb-2" type="text" placeholder="Ime" formControlName="ime">
+            <span *ngIf="!ime.valid && (ime.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaše ime
+            </span>
+          </div>
+
+          <div class="form-group mb-1">
+            <input class="form-control  w-100 custom-input mb-2" type="text" placeholder="Prezime" formControlName="prezime">
+            <span *ngIf="!prezime.valid && (prezime.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaše prezime
+            </span>
+          </div>
+
+          <div class="form-group mb-1">
+            <input class="form-control w-100 custom-input mb-2" type="email" placeholder="Email" formControlName="email">
+            <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
+              <span *ngIf="email.hasError('required')">Molim Vas upisite Vaš email</span>
+              <span *ngIf="email.hasError('email')">Email nije validan </span>
+           </span>
+          </div>
+
+          <div class="form-group form-inline d-flex">
+            <label id="date-birth">Datum rođenja:</label>
+            <input class="form-control  w-100 custom-input mb-2" type="date" placeholder="Datum rođenja" formControlName="datum">
+          </div>
+            <span *ngIf="!datum.valid && (datum.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaš datum rodjenja
+            </span>
+
+          <div class="form-group mb-1">
+            <input class="form-control w-100 custom-input mb-2" type="text" placeholder="Grad" formControlName="grad">
+            <span *ngIf="!grad.valid && (grad.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaše mesto stanovanja
+            </span>
+          </div>
+
+          <div class="form-group mb-1">
+            <input class="form-control  w-100 custom-input mb-2" type="text" placeholder="Broj telefona" formControlName="telefon">
+            <span *ngIf="!telefon.valid && (telefon.touched || userSubmitted)" class="error-block">
+              <span *ngIf="telefon.errors?.['required']">Molim Vas ipišite Vaš broj telefona</span>
+              <span *ngIf="telefon.errors?.['maxlength']">Broj telefona ne može biti duži od 10 brojeva</span>
+            </span>
+          </div>
+
+          <div class="form-group mb-1" >
+            <select id="pol" formControlName="pol" class="form-control custom-input mb-2">
+              <option [ngValue]="null">Izaberite pol:</option>
+              <option value="musko">Muško</option>
+              <option value="zensko">Žensko</option>
+            </select>
+            <span *ngIf="!pol.valid && (pol.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaš pol
+            </span>
+          </div>
+
+          <div class="form-group mb-1">
+            <input class="form-control  w-100 custom-input mb-2" type="text" placeholder="Korisničko ime" formControlName="korisnickoIme">
+            <span *ngIf="!korisnickoIme.valid && (korisnickoIme.touched || userSubmitted)" class="error-block">
+              Molim Vas upisite Vaše korisničko ime
+            </span>
+          </div>
+
+
+          <div class="form-group mb-1 position-relative">
+            <input
+              #passwordInput
+              class="form-control w-100 custom-input mb-2 password-input"
+              type="{{ showPassword ? 'text' : 'password' }}"
+              placeholder="Lozinka"
+              formControlName="lozinka"
+            />
+            <label class="password-toggle-icon" (click)="togglePasswordVisibility()">
+              <i class="fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+            </label>
+          </div>
+          <span *ngIf="!lozinka.valid && (lozinka.touched || userSubmitted)" class="error-block">
+            <span *ngIf="lozinka.errors?.['required']">Molim Vas upišite Vašu lozinku </span>
+            <span *ngIf="lozinka.errors?.['minlength']">Lozinka mora imati najmanje 8 karaktera</span>
+          </span>
+
+          <div class="d-flex align-items-center justify-content-center mt-4">
+            <button id="purple_button" class="btn btn-primary">Registruj se</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

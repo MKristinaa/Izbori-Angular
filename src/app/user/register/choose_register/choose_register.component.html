@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div id="first_div_register" class="col-12 col-md-5">
+      <a class="navbar-brand" routerLink=""><img src="../../assets/Images/slika3.png" width="100px" alt="Logo"></a>
+      <div class="position-relative" style="padding-top: 5%;">
+        <b>SVE <br> INFORMACIJE <br> NA JEDNOM<br>MESTU</b>
+      </div>
+      <button id="white_button" class="btn btn-primary mt-3" routerLink="/login">Uloguj se</button>
+    </div>
+
+    <div class="col-12 col-md-7 d-flex flex-column align-items-center justify-content-center my-4">
+      <div class="col-10 col-md-7 col-lg-5">
+        <h1 class="mb-4" style="color: #5F1DB5;">Izaberite način registrovanja: </h1>
+        <form [formGroup]="roleForm" (ngSubmit)="submitRole()">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="role" name="role" id="userRadio" value="Korisnik">
+            <label class="form-check-label" for="userRadio">
+              Korisnik
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="role" name="role" id="partyRadio" value="Stranka">
+            <label class="form-check-label" for="partyRadio">
+              Stranka
+            </label>
+          </div>
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="radio" formControlName="role" name="role" id="adminRadio" value="Admin">
+            <label class="form-check-label" for="adminRadio">
+              Admin
+            </label>
+          </div>
+
+          <button id="purple_button" class="btn btn-primary" type="submit">Potvrdi</button>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+  <div>
+    <h1 style="color: #5F1DB5;">Izaberite način registrovanja: </h1>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Korisnik
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Stranka
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Admin
+      </label>
+    </div>
+
+    <button class="btn btn-primary">Potvrdi</button>
+
+  </div>
+</div>
+
+
+ -->

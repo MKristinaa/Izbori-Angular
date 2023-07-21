@@ -1,0 +1,46 @@
+#first_div_register{
+  background-color: #5F1DB5;
+  height: 100vh;
+  padding: 5vh;
+  color: white;
+  font-size: 50px;
+}
+#white_button{
+  background-color: #FFFFFF;
+  color: #5F1DB5;
+  border: none;
+}
+#purple_button{
+  background-color: #5F1DB5;
+  color: #FFFFFF;
+  border: none;
+}
+#text{
+  color: #5F1DB5;
+  font-size: 5vh;
+}
+.custom-input {
+  background-color: #f0f0f0;
+}
+
+/* Input error */
+.ng-invalid.ng-touched{
+  border-color: red;
+}
+
+.error-block{
+  color: red;
+}
+
+/* toggle button */
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

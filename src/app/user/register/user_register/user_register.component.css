@@ -1,0 +1,12 @@
+
+#date-birth{
+  color: black;
+  font-size: 17px;
+  width:35vh;
+  position: relative;
+  top: 6px;
+  left: 13px;
+}
+::placeholder {
+  color: black;
+}

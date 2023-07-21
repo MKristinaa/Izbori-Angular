@@ -1,0 +1,14 @@
+#first_div_login{
+  background-color: #5F1DB5;
+  height: 100vh;
+  padding: 5vh;
+  color: white;
+  font-size: 50px;
+}
+.text-right {
+  text-align: right;
+}
+
+::placeholder {
+  color: black;
+}

@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-7 d-flex flex-column align-items-center justify-content-center">
+      <div class="col-10 col-md-7 col-lg-5">
+        <div id="text" class="d-flex align-items-center justify-content-center mb-5">
+          <b>ULOGUJTE SE</b>
+        </div>
+
+        <form class="text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mt-4 mb-4">
+            <input type="text" class="form-control custom-input" placeholder="Korisničko ime"  formControlName="korisnickoIme">
+            <span *ngIf="!korisnickoIme.valid && (korisnickoIme.touched || userSubmitted)" class="error-block">
+              Molim Vas upišite Vaše korisničko ime
+            </span>
+          </div>
+
+          <div class="form-group mb-1 position-relative">
+            <input
+              #passwordInput
+              class="form-control w-100 custom-input mb-2 password-input"
+              type="{{ showPassword ? 'text' : 'password' }}"
+              placeholder="Lozinka"
+              formControlName="lozinka"
+            />
+            <label class="password-toggle-icon" (click)="togglePasswordVisibility()">
+              <i class="fas" [ngClass]="showPassword ?  'fa-eye': 'fa-eye-slash'"></i>
+            </label>
+          </div>
+          <span *ngIf="!lozinka.valid && (lozinka.touched || userSubmitted)" class="error-block">
+            <span *ngIf="lozinka.errors?.['required']">Molim Vas upišite Vašu lozinku </span>
+            <span *ngIf="lozinka.errors?.['minlength']">Lozinka mora imati najmanje 8 karaktera</span>
+          </span><br>
+
+
+          <button id="purple_button" type="submit" class="btn btn-primary mt-4">Prijavi se</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div id="first_div_login" class="col-md-5 d-flex flex-column align-items-end mt-3 mt-md-0">
+      <a class="navbar-brand" routerLink=""><img src="../../assets/Images/slika3.png" width="100px" alt="Logo" class="mb-lg-5 mt-3"></a>
+      <div class="col-10 bg-blue d-flex flex-column align-items-end justify-content-center mt-lg-5 mt-md-3">
+        <div class="text-right">
+          <b><p>DOBRO NAM</p></b>
+          <b><p>DOŠLI</p></b>
+        </div>
+        <button id="white_button" class="btn btn-primary mt-4" routerLink="/choose_register">Registracija</button>
+      </div>
+    </div>
+
+  </div>
+</div>

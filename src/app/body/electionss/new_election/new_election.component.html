@@ -1,0 +1,45 @@
+<app-nav_bar></app-nav_bar>
+
+
+<div class="container d-flex flex-column align-items-center p-5 " style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 col-md-6 shadow p-5">
+  <form [formGroup]="novaForma" class="w-50">
+    <div class="mb-3 ">
+      <label for="vrsta" class="form-label">Vrsta izbora</label>
+      <div>
+        <input type="radio" id="vrstaLokalni" value="Lokalni" formControlName="vrsta" (change)="onVrstaIzboraChange()" />
+        <label for="vrstaLokalni">Lokalni</label>
+      </div>
+      <div>
+        <input type="radio" id="vrstaSavezni" value="Savezni" formControlName="vrsta" (change)="onVrstaIzboraChange()" />
+        <label for="vrstaSavezni">Savezni</label>
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="datumPocetka" class="form-label">Datum i vreme početka</label>
+      <input type="datetime-local" id="datumPocetka" class="form-control" formControlName="datumPocetka" />
+    </div>
+
+    <div class="mb-3">
+      <label for="datumZavrsetka" class="form-label">Datum završetka</label>
+      <input type="date" id="datumZavrsetka" class="form-control" formControlName="datumZavrsetka" />
+    </div>
+
+    <div class="mb-3" *ngIf="novaForma.get('vrsta')?.value == 'Lokalni'">
+      <label for="grad" class="form-label">Grad</label>
+      <input type="text" id="grad" class="form-control" formControlName="grad" />
+    </div>
+
+    <div class="mb-3">
+      <label for="otvoreni" class="form-label">Otvoreni</label>
+      <input type="text" id="otvoreni" class="form-control" formControlName="otvoreni" [readonly]="true" />
+    </div>
+
+    <button id="purple_button" type="button" class="btn btn-primary" (click)="newElection()" >Raspisi izbor</button>
+  </form>
+  </div>
+</div>
+
+<app-footer class="footer"></app-footer>

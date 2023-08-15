@@ -1,0 +1,58 @@
+<app-nav_bar></app-nav_bar>
+
+<div class="container d-flex flex-column align-items-center p-5 " style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 col-md-6 shadow p-5">
+    <h2 class="mb-5">Moji podaci</h2>
+
+    <div class="col-md-12 mx-auto">
+      <div *ngIf="user" class="table-container">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="label">Ime i prezime</td>
+              <td>{{user.ime}} {{user.prezime}}</td>
+            </tr>
+            <tr>
+              <td class="label">Email</td>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr>
+              <td class="label">Datum rođenja</td>
+              <td>{{user.datumRodjenja}}</td>
+            </tr>
+            <tr>
+              <td class="label">Grad</td>
+              <td>{{user.grad}}</td>
+            </tr>
+            <tr>
+              <td class="label">Broj telefona</td>
+              <td>{{user.brojTelefona}}</td>
+            </tr>
+            <tr>
+              <td class="label">Pol</td>
+              <td>{{user.pol}}</td>
+            </tr>
+            <tr *ngIf="isClan">
+
+              <td class="label">Stranka</td>
+              <td >{{user.nazivStranke}}
+
+                <button id="purple_button" class="btn btn-primary d-flex justify-content-end mt-3 mb-3" (click)='onSubmit()'>Izađi iz stranke</button>
+
+              </td>
+
+            </tr>
+            <tr *ngIf="!isClan">
+              <td class="label">Stranka</td>
+              <td>Još uvek niste član ni jedne stranke.</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-footer class="footer"></app-footer>

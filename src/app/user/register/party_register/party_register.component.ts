@@ -13,12 +13,10 @@ export class Party_registerComponent implements OnInit {
 
   passwordControl: FormControl = new FormControl();
   showPassword: boolean = false;
-
   selectedRoleValue!: string | null;
-
   registerForm!: FormGroup;
   userSubmitted?: boolean;
-
+  x!:Party;
   party!: Party;
 
   constructor(private fb: FormBuilder,
@@ -75,7 +73,7 @@ export class Party_registerComponent implements OnInit {
     return this.registerForm.get('lozinka') as FormControl;
   }
 
-  x:any;
+
   onSubmit(){
 
     this.userSubmitted = true;
@@ -84,7 +82,6 @@ export class Party_registerComponent implements OnInit {
       this.userservice.postParty(this.userData()).subscribe(res =>{this.x = res});
       this.registerForm.reset();
       this.userSubmitted = false;
-
       this.router.navigate(['/login']);
       alert("Uspesno ste se registrovali kao stranka!");
     }else{
@@ -98,7 +95,8 @@ export class Party_registerComponent implements OnInit {
       korisnickoIme: this.korisnickoIme.value,
       lozinka: this.lozinka.value,
       naziv: this.naziv.value,
-      slogan: this.naziv.value,
+      slogan: this.slogan.value,
+      godinaOsnivanja: this.godinaOsnivanja.value,
       nosilacListe: this.nosilacListe.value
     }
   }

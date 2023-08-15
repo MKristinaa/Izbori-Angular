@@ -1,0 +1,69 @@
+<app-nav_bar></app-nav_bar>
+
+
+<div class="container-fluid d-flex flex-column p-5" style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 shadow p-5">
+    <p routerLink="/elections" style="color: blue; cursor: pointer;"> <- <u>Nazad</u></p>
+    <div *ngIf="elections" class="table-container">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td colspan="2" class="center-align"><b><h2>{{ elections.vrsta }}</h2></b></td>
+          </tr>
+          <tr>
+            <td class="label">Datum početka:</td>
+            <td>{{ formatirajDatum(elections.datumPocetka) }}</td>
+          </tr>
+          <tr>
+            <td class="label">Datum završetka:</td>
+            <td>{{ formatirajDatum(elections.datumZavrsetka) }}</td>
+          </tr>
+          <tr *ngIf="elections.vrsta == 'Lokalni'">
+            <td class="label">Grad:</td>
+            <td>{{ elections.grad }}</td>
+          </tr>
+          <tr>
+            <td class="label">Otvoreni:</td>
+            <td>{{ elections.otvoreni }}</td>
+          </tr>
+          <tr *ngIf="role == 'Stranka' && elections.otvoreni == 'Da'">
+            <td class="label">Želite da se prijavite?</td>
+            <td><button id="purple_button" class="btn btn-primary" (click)="PrijaviSe(elections)">Prijavi se</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="mt-lg-5">U nastavku se nalazi lista stranaka prijavljenih na izborima </h2>
+    <p *ngIf="role == 'Korisnik'">Napomena! Možete dati glas samo za jednu stranku</p>
+
+    <div class="table-responsive mt-4">
+      <table class="table" style="color: #3C3C3C;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Naziv stranke</th>
+            <th>Slogan</th>
+            <th>Nosioc liste</th>
+            <th *ngIf="role == 'Korisnik'">Daj glas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let partie of parties; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ partie.naziv}}</td>
+            <td>{{ partie.slogan }}</td>
+            <td>{{ partie.nosilacListe }}</td>
+            <td *ngIf="role == 'Korisnik'">
+              <button id="purple_button" class="btn btn-primary" (click)="Glasaj(partie)">Daj glas</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+
+<app-footer class="footer"></app-footer>

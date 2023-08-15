@@ -13,12 +13,10 @@ export class User_registerComponent implements OnInit {
 
   passwordControl: FormControl = new FormControl();
   showPassword: boolean = false;
-
   selectedRoleValue!: string | null;
-
   registerForm!: FormGroup;
   userSubmitted?: boolean;
-
+  korisnik!:User;
   user!: User;
 
   constructor(private fb: FormBuilder,
@@ -89,7 +87,6 @@ export class User_registerComponent implements OnInit {
     return this.registerForm.get('lozinka') as FormControl;
   }
 
-  korisnik:any;
   onSubmit(){
 
     this.userSubmitted = true;
@@ -98,7 +95,6 @@ export class User_registerComponent implements OnInit {
       this.userservice.postUser(this.userData()).subscribe(x =>{this.korisnik=x});
       this.registerForm.reset();
       this.userSubmitted = false;
-
       this.router.navigate(['/login']);
       alert("Uspesno ste se registrovali kao korisnik!");
     }else{

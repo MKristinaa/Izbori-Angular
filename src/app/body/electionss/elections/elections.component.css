@@ -1,0 +1,39 @@
+
+
+.image-container {
+  position: relative;
+  display: block; /* Changed from inline-block to block */
+  width: 100%;
+  overflow: hidden; /* Added overflow hidden to contain images */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 200px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-overlay p {
+  margin: 0;
+  padding: 5px;
+}
+

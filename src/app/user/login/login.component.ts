@@ -14,9 +14,11 @@ export class LoginComponent implements OnInit {
 
   passwordControl: FormControl = new FormControl();
   showPassword: boolean = false;
-
   loginForm!: FormGroup;
   userSubmitted!: boolean;
+  error: string | null = null;
+  user!: Login;
+  token:any ;
 
   constructor(private fb: FormBuilder,
               private userservice: UserService,
@@ -52,57 +54,50 @@ export class LoginComponent implements OnInit {
   }
 
 
-
-
-  token:any ;
-  error:any = 'bla';
-  onSubmit(){
-    console.group(this.loginForm.value);
+  onSubmit() {
     this.userSubmitted = true;
 
-    this.userservice.login(this.userData()).subscribe(x=>{this.token=x;
+    this.userservice.login(this.userData()).subscribe(
+      (response) => {
+        this.token = response;
 
-      if(x == null)
-      {
-        this.error=null;
+        if (this.token.token) {
+          localStorage.setItem('token', this.token.token);
+          const token = this.token.token;
+          const decodedToken: any = jwt_decode(token);
+          const userId = decodedToken.nameid;
+          console.log(decodedToken);
+
+          console.log('User ID:', userId);
+          localStorage.setItem('userId', userId);
+
+          const ime = decodedToken.name;
+          localStorage.setItem('Username', ime);
+
+          const userRole = decodedToken.role;
+          localStorage.setItem('UserRole', userRole);
+
+          alert('Uspešno ste se ulogovali kao ' + userRole.toLowerCase() + '!');
+          this.router.navigate(['/']);
+        } else {
+          this.error = 'Korisničko ime ili lozinka nisu tačni';
+        }
+      },
+      (error) => {
+        this.error = 'Korisničko ime ili lozinka nisu tačni';
       }
-
-    if(this.token.token){
-      localStorage.setItem('token', this.token.token);
-      const token = this.token.token;
-      const decodedToken: any = jwt_decode(token);
-      const userId = decodedToken.nameid; // or decodedToken.nameid
-      console.log(decodedToken);
-
-      console.log('User ID:', userId);
-      localStorage.setItem('userId', userId);
-
-      const ime = decodedToken.name;
-      localStorage.setItem('Username', ime);
-
-      const userRole = decodedToken.role;
-      localStorage.setItem('UserRole', userRole);
-
-      alert("Uspešno ste se ulogovali!");
-      this.router.navigate(['/']);
-    }else {
-
-      alert("Greška pri logovanju");
-    }
-    });
+    );
   }
 
-  user!: Login;
+  clearError() {
+    this.error = null;
+  }
+
+
   userData(): Login{
     return this.user = {
       korisnickoIme: this.korisnickoIme.value,
       lozinka: this.lozinka.value
     }
   }
-
-  removeError(){
-    this.error = 'nemaGreska';
-  }
-
-
 }

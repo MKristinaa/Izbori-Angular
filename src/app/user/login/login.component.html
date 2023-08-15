@@ -9,7 +9,7 @@
 
         <form class="text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group mt-4 mb-4">
-            <input type="text" class="form-control custom-input" placeholder="Korisničko ime"  formControlName="korisnickoIme">
+            <input type="text" class="form-control custom-input" placeholder="Korisničko ime"  formControlName="korisnickoIme" (input)="clearError()" >
             <span *ngIf="!korisnickoIme.valid && (korisnickoIme.touched || userSubmitted)" class="error-block">
               Molim Vas upišite Vaše korisničko ime
             </span>
@@ -22,6 +22,7 @@
               type="{{ showPassword ? 'text' : 'password' }}"
               placeholder="Lozinka"
               formControlName="lozinka"
+              (input)="clearError()"
             />
             <label class="password-toggle-icon" (click)="togglePasswordVisibility()">
               <i class="fas" [ngClass]="showPassword ?  'fa-eye': 'fa-eye-slash'"></i>
@@ -33,9 +34,13 @@
           </span><br>
 
 
-          <button id="purple_button" type="submit" class="btn btn-primary mt-4">Prijavi se</button>
-        </form>
+          <button id="purple_button" type="submit" class="btn btn-primary mt-4">Prijavi se</button> <br><br>
 
+          <span *ngIf="error && (lozinka.touched || userSubmitted)" class="error-block">
+            {{ error }}
+          </span>
+
+        </form>
       </div>
     </div>
 

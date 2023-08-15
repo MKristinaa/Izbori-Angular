@@ -1,0 +1,37 @@
+<app-nav_bar></app-nav_bar>
+
+<div class="container-fluid d-flex flex-column p-5" style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 shadow p-5">
+    <div class="mb-5">
+      <h2 class="d-flex align-items-center justify-content-center mb-5" style="color: #3C3C3C;">Lista svih ulogovanih stranaka</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table" style="color: #3C3C3C;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Naziv</th>
+            <th>Slogan</th>
+            <th>Godina osnivanja</th>
+            <th>Nosilac liste</th>
+            <th *ngIf="role == 'Korisnik'" class="d-flex justify-content-center align-items-center">Želiš da postaneš član?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stranka of stranke; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ stranka.naziv }}</td>
+            <td>"{{ stranka.slogan }}"</td>
+            <td>{{ stranka.godinaOsnivanja }}</td>
+            <td>{{ stranka.nosilacListe }}</td>
+            <td *ngIf="role == 'Korisnik'" class="d-flex justify-content-center align-items-center">
+             <button id="purple_button" class="btn btn-primary" (click)="uclaniSe(stranka)">Učlani se</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-footer class="footer"></app-footer>

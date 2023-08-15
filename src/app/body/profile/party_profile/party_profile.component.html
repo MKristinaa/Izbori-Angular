@@ -1,0 +1,35 @@
+<app-nav_bar></app-nav_bar>
+
+<div class="container d-flex flex-column align-items-center p-5 " style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 col-md-6 shadow p-5">
+    <h2 class="mb-5">Moji podaci</h2>
+
+    <div class="col-md-12 mx-auto"> 
+      <div *ngIf="party" class="table-container">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="label">Naziv stranke</td>
+              <td>{{ party.naziv }}</td>
+            </tr>
+            <tr>
+              <td class="label">Slogan</td>
+              <td>"{{ party.slogan }}"</td>
+            </tr>
+            <tr>
+              <td class="label">Godina osnivanja</td>
+              <td>{{ party.godinaOsnivanja }}</td>
+            </tr>
+            <tr>
+              <td class="label">Nosilac liste</td>
+              <td>{{ party.nosilacListe }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-footer class="footer"></app-footer>

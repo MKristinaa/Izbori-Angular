@@ -13,10 +13,10 @@ export class Choose_registerComponent implements OnInit {
   roleForm!: FormGroup;
   selectedRole: FormControl = new FormControl('', [Validators.required]);
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    this.roleForm = this.formBuilder.group({
+    this.roleForm = this.fb.group({
       role: this.selectedRole
     });
   }
@@ -43,6 +43,4 @@ export class Choose_registerComponent implements OnInit {
       }
     }
   }
-
-
 }

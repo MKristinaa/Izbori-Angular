@@ -1,0 +1,53 @@
+<app-nav_bar></app-nav_bar>
+
+<div class="container-fluid d-flex flex-column p-5" style="min-height: calc(100vh - 180px);">
+  <div class="flex-grow-1 shadow p-5">
+    <div class="mb-5">
+      <h2 class="d-flex align-items-center justify-content-center" style="color: #3C3C3C;">Rezultati izbora</h2>
+    </div>
+
+    <!-- Filter -->
+    <div class="row mb-5">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center">
+          <label for="filterCity" class="form-label col-md-4">Filtriraj po nazivu grada:</label>
+          <input type="text" class="form-control" id="filterCity" [(ngModel)]="filterCity">
+          <button id="purple_button" class="btn btn-primary m-2" (click)="onSubmit()">Filtriraj</button>
+          <button type="button" class="btn btn-secondary" (click)="resetFilter()">Poništi</button>
+        </div>
+      </div>
+    </div>
+    <!------------>
+
+    <div class="table-responsive">
+      <table class="table" style="color: #3C3C3C;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tip</th>
+            <th>Datum početka</th>
+            <th>Datum završetka</th>
+            <th>Grad</th>
+            <th>Otvoreni</th>
+            <th>Pobednik</th>
+            <th>Broj glasova</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let election of elections; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ election.vrsta }}</td>
+              <td>{{ election.datumPocetka }}</td>
+              <td>{{ election.datumZavrsetka }}</td>
+              <td>{{ election.grad }}</td>
+              <td>{{ election.otvoreni }}</td>
+              <td>{{ election.nazivStranke }} </td>
+              <td>{{ election.brojGlasova }} </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-footer class="footer"></app-footer>

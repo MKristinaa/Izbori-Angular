@@ -18,3 +18,11 @@
 
 }
 
+.navbar-nav .nav-link {
+  color:#D3D3D3;
+}
+
+.navbar-nav .nav-link.active {
+  color: #fff;
+  font-size: 18px;
+}

@@ -13,11 +13,10 @@ export class Admin_registerComponent implements OnInit {
 
   passwordControl: FormControl = new FormControl();
   showPassword: boolean = false;
-
   selectedRoleValue!: string | null;
-
   registerForm!: FormGroup;
   userSubmitted?: boolean;
+  x!:Admin;
   admin!: Admin;
 
 
@@ -67,7 +66,7 @@ export class Admin_registerComponent implements OnInit {
   }
 
 
-  x:any;
+
   onSubmit(){
 
     this.userSubmitted = true;
@@ -76,7 +75,6 @@ export class Admin_registerComponent implements OnInit {
       this.userservice.postAdmin(this.userData()).subscribe(res =>{this.x = res});
       this.registerForm.reset();
       this.userSubmitted = false;
-
       this.router.navigate(['/login']);
       alert("Uspesno ste se registrovali kao admin!");
     }else{

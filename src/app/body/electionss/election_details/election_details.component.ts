@@ -99,13 +99,12 @@ export class Election_detailsComponent implements OnInit {
     const electionId = this.route.snapshot.paramMap.get('id');
     const id = localStorage.getItem('userId');
 
-    // Dohvatanje trenutnog datuma i vremena
     const trenutniDatum = new Date();
     const datumGlasanjaString = trenutniDatum.toISOString();
     this.userService.getUser(+id!).subscribe(
       (korisnik) => {
         if (korisnik) {
-          const lokacijaGlasanja = korisnik.grad; // Pretpostavimo da mesto korisnika čuvamo u svojstvu 'mesto'
+          const lokacijaGlasanja = korisnik.grad;
 
           const pripada = {
             IdKorisnika: id,

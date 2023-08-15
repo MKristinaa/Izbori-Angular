@@ -30,7 +30,7 @@ export class New_electionComponent implements OnInit {
     });
   }
 
-  
+
   onVrstaIzboraChange() {
     const vrstaIzboraControl = this.novaForma.get('vrsta');
 
@@ -49,8 +49,6 @@ export class New_electionComponent implements OnInit {
 
       const datumPocetka = new Date(izbor.datumPocetka);
       const datumZavrsetka = new Date(datumPocetka.getTime() + (5 * 60 * 1000));
-
-      //datumZavrsetka.setDate(datumZavrsetka.getDate() + 1);
 
       izbor.datumPocetka = this.datePipe.transform(izbor.datumPocetka, 'yyyy-MM-ddTHH:mm:ss');
       izbor.datumZavrsetka = this.datePipe.transform(datumZavrsetka, 'yyyy-MM-ddTHH:mm:ss');

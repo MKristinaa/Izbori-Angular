@@ -21,17 +21,17 @@ export class MembersComponent implements OnInit {
               private datePipe: DatePipe,
               private sharedService: SharedService) {
 
-                this.filterForm = this.formBuilder.group({
-                  filterOption: [''],
-                  searchTerm: [''],
-                  datumRodjenja: [''],
-                  pol: ['']
-                });
-               }
+  this.filterForm = this.formBuilder.group({
+    filterOption: [''],
+    searchTerm: [''],
+    datumRodjenja: [''],
+    pol: ['']
+  });
+  }
 
   ngOnInit() {
     this.listOfMembers();
-}
+  }
 
 listOfMembers(){
   const idStranke = this.sharedService.getUserId();

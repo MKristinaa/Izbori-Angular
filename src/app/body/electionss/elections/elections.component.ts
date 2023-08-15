@@ -24,10 +24,8 @@ export class ElectionsComponent implements OnInit {
   ngOnInit() {
     this.electionService.getElection().subscribe(
       (res: Election[]) => {
-        // Filtriraj izbore i dohvati samo one koji su aktivni (Otvoreni = "Da")
         this.elections = res.filter((election) => election.otvoreni == 'Da');
 
-        // Formatiranje datuma za svaki izbor
         this.elections.forEach((election) => {
 
         const noviDatum = election.datumZavrsetka;
@@ -41,10 +39,8 @@ export class ElectionsComponent implements OnInit {
 
         if (!isNaN(trenutniDatum.getTime()) && !isNaN(datumStarII.getTime())) {
           if (trenutniDatum.getTime() > datumStarII.getTime()) {
-            // Ažurirajte status izbora na frontendu
             election.otvoreni = 'Ne';
 
-            // Ažurirajte status izbora na backendu
             this.electionService.updateElectionStatus(+election.id!, 'Ne').subscribe(
               (response) => {
                 console.log('Status izbora ažuriran na "Ne".', response);

@@ -28,7 +28,7 @@ export class Admin_registerComponent implements OnInit {
   ngOnInit() {
     this.createRegistrationForm();
     this.route.paramMap.subscribe(params => {
-      this.selectedRoleValue = params.get('selectedRole'); // Pristup prenetoj vrednosti parametra
+      this.selectedRoleValue = params.get('selectedRole');
     });
 
     // Lozinka

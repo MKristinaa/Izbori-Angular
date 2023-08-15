@@ -33,24 +33,18 @@ export class ResultsComponent implements OnInit {
   loadElections(){
      this.electionService.getElection().subscribe(
       (res: Winner[]) => {
-        // Filtriraj izbore sa statusom 'Ne'
         this.elections = res.filter((election) => election.otvoreni == 'Ne');
 
-        // Formatiraj datume za prikaz
         this.elections.forEach((election) => {
           election.datumPocetka = this.formatirajDatum(election.datumPocetka);
           election.datumZavrsetka = this.formatirajDatum(election.datumZavrsetka);
 
-
-          // Pozovi metodu za dobijanje pobednika za svaki izbor
           this.electionService.getPobednik(election.id!).subscribe(
             (pobednik) => {
               if (pobednik) {
-                // Dodaj podatke o pobedniku u izbornu listu
                 election.nazivStranke = pobednik.stranka.naziv;
                 election.brojGlasova = pobednik.brojGlasova;
               } else {
-                // Ako nema pobednika, postavi default vrednosti
                 election.nazivStranke = 'Nema pobednika';
                 election.brojGlasova = 0;
               }
@@ -81,15 +75,12 @@ export class ResultsComponent implements OnInit {
         election.datumZavrsetka = this.formatirajDatum(election.datumZavrsetka);
 
 
-        // Pozovi metodu za dobijanje pobednika za svaki izbor
         this.electionService.getPobednik(election.id!).subscribe(
           (pobednik) => {
             if (pobednik) {
-              // Dodaj podatke o pobedniku u izbornu listu
               election.nazivStranke = pobednik.stranka.naziv;
               election.brojGlasova = pobednik.brojGlasova;
             } else {
-              // Ako nema pobednika, postavi default vrednosti
               election.nazivStranke = 'Nema pobednika';
               election.brojGlasova = 0;
             }

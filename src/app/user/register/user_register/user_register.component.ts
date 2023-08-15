@@ -28,7 +28,7 @@ export class User_registerComponent implements OnInit {
     // Uzimanje tipa
     this.createRegistrationForm();
     this.route.paramMap.subscribe(params => {
-      this.selectedRoleValue = params.get('selectedRole'); // Pristup prenetoj vrednosti parametra
+      this.selectedRoleValue = params.get('selectedRole'); 
     });
 
     // Lozinka
